@@ -21,8 +21,8 @@ render_priority = 0
 shader = ExtResource("2_mtr83")
 shader_parameter/planet_position = Vector3(0, 0, 0)
 shader_parameter/planet_radius = 10.0
-shader_parameter/sun_position = Vector3(100, 100, 0)
-shader_parameter/atmosphere_size = 0.1
+shader_parameter/sun_position = Vector3(100, 100, 100)
+shader_parameter/atmosphere_size = 1.0
 
 [sub_resource type="Environment" id="Environment_jcv8b"]
 background_energy_multiplier = 0.0
@@ -34,7 +34,7 @@ shader = ExtResource("1_1odxm")
 [node name="PlanetContainer" type="Node3D"]
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 19.585)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 20)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Camera3D"]
 extra_cull_margin = 16384.0

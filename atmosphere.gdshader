@@ -22,7 +22,7 @@ float sdSphere(vec3 p, float s )
 
 //sdf world
 float map(vec3 pos) {
-	float d = length(pos)-planet_radius*(1. + atmosphere_size);
+	float d = length(pos)-planet_radius-atmosphere_size;
 	return d;
 }
 
