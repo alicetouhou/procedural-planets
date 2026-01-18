@@ -1,0 +1,54 @@
+[gd_scene load_steps=8 format=3 uid="uid://pbxbywb8tcjs"]
+
+[ext_resource type="Shader" uid="uid://khsoto2lna20" path="res://planet.gdshader" id="1_1odxm"]
+[ext_resource type="Shader" uid="uid://fs6a7pun7jhw" path="res://atmosphere.gdshader" id="2_mtr83"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_a75xc"]
+render_priority = 0
+shader = ExtResource("2_mtr83")
+shader_parameter/planet_position = Vector3(0, 0, 0)
+shader_parameter/planet_radius = 10.0
+shader_parameter/sun_position = Vector3(0, 0, 0)
+shader_parameter/atmosphere_size = 0.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_mtr83"]
+material = SubResource("ShaderMaterial_a75xc")
+flip_faces = true
+size = Vector2(2, 2)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mtr83"]
+render_priority = 0
+shader = ExtResource("2_mtr83")
+shader_parameter/planet_position = Vector3(0, 0, 0)
+shader_parameter/planet_radius = 10.0
+shader_parameter/sun_position = Vector3(100, 100, 0)
+shader_parameter/atmosphere_size = 0.1
+
+[sub_resource type="Environment" id="Environment_jcv8b"]
+background_energy_multiplier = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1odxm"]
+render_priority = 1
+shader = ExtResource("1_1odxm")
+
+[node name="PlanetContainer" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 19.585)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Camera3D"]
+extra_cull_margin = 16384.0
+mesh = SubResource("QuadMesh_mtr83")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("ShaderMaterial_mtr83")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_jcv8b")
+
+[node name="Planet" type="CSGSphere3D" parent="."]
+layers = 2
+cast_shadow = 0
+radius = 10.0
+radial_segments = 24
+rings = 24
+material = SubResource("ShaderMaterial_1odxm")
