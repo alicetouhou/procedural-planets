@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://40vpd8f0047o"]
+
+[ext_resource type="Script" uid="uid://bgqdk4e3hely4" path="res://physics/body.gd" id="1_4fpsl"]
+[ext_resource type="Script" uid="uid://bphji2l8tnhk3" path="res://physics/manager.gd" id="1_4vufh"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_4vufh"]
+
+[node name="Planets" type="Node3D"]
+script = ExtResource("1_4vufh")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." node_paths=PackedStringArray("manager")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5975266, 0, 0)
+mesh = SubResource("BoxMesh_4vufh")
+script = ExtResource("1_4fpsl")
+inital_vel = Vector3(0, 0, 1)
+mass = 15
+manager = NodePath("..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." node_paths=PackedStringArray("manager")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.503811, 0, 0)
+mesh = SubResource("BoxMesh_4vufh")
+script = ExtResource("1_4fpsl")
+inital_vel = Vector3(0, 0, -1)
+mass = 15
+manager = NodePath("..")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.8899129, 0.337343, -0.3070094, -0.18355472, 0.88102347, 0.43601075, 0.41756767, -0.33165854, 0.845955, -3.8997436, 1.9363165, 3.309669)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.8747212, 0.4846264, 0, -0.4846264, 0.8747212, 0, 3.2695384, 7.979474)
